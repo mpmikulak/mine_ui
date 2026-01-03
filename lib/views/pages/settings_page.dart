@@ -1,0 +1,53 @@
+import 'package:flutter/material.dart';
+
+import 'package:mine_ui/views/widgets/ram_slider.dart';
+import 'package:mine_ui/data/databases/settings.dart' as settings;
+
+class SettingsPage extends StatelessWidget {
+  const SettingsPage({super.key});
+  final String name = "Settings Page";
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(name),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+      ),
+      body: const Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [RamSlider(), DarkModeSwitch()],
+        ),
+      ),
+    );
+  }
+}
+
+class DarkModeSwitch extends StatefulWidget {
+  const DarkModeSwitch({super.key});
+
+  @override
+  State<DarkModeSwitch> createState() => _DarkModeSwitchState();
+}
+
+class _DarkModeSwitchState extends State<DarkModeSwitch> {
+  @override
+  Widget build(BuildContext context) {
+    return SwitchListTile(
+      title: const Text(
+        "Dark Mode",
+        style: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
+      value: settings.darkMode,
+      onChanged: (bool value) {
+        setState(() {
+          settings.darkMode = value;
+        });
+      },
+    );
+  }
+}
