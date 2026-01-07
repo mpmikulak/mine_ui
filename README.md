@@ -3,7 +3,9 @@
 A user interface for managing Minecraft servers.
 
 ## Notice
-This is my freshman effort at developing a program from the ground up, so please be nice.
+To standardize the development environment and avoid dependency hell, this project is being developed using devcontainers. To utilize this feature, you must have docker installed (or podman aliased as docker) and open the project folder in a compatible editor, such as VS Code or a JetBrains editor.
+
+Also, this is my freshman effort at developing a program from the ground up, so please be nice.
 
 ## Planned Features
 

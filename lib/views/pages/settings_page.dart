@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:mine_ui/views/widgets/ram_slider.dart';
+import 'package:mine_ui/views/widgets/sliders.dart';
 import 'package:mine_ui/data/databases/settings.dart' as settings;
-import 'package:mine_ui/views/widgets/text_styles.dart';
+import 'package:mine_ui/views/widgets/text.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});

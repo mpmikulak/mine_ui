@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:mine_ui/views/widgets/text_styles.dart';
+import 'package:mine_ui/views/widgets/text.dart';
 import 'package:mine_ui/data/notifiers.dart';
 import 'settings_page.dart';
 import 'package:mine_ui/views/pages/add_server_page.dart';
