@@ -41,3 +41,16 @@ class DrawerHeaderSubtext extends StatelessWidget {
     );
   }
 }
+
+Widget CategoryTitleText(String title) {
+  return Padding(
+    padding: const EdgeInsets.all(12.0),
+    child: Text(
+      title,
+      style: const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w400,
+      ),
+    ),
+  );
+}

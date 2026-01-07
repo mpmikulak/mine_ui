@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'dart:io';
 
 import 'package:mine_ui/views/widgets/text_styles.dart';
 import 'package:mine_ui/data/notifiers.dart';
 import 'settings_page.dart';
-import 'package:mine_ui/data/server.dart';
-import 'package:mine_ui/views/widgets/server_list_tile_entry.dart';
-import 'package:mine_ui/data/databases/settings.dart' as settings;
+import 'package:mine_ui/views/pages/add_server_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -23,19 +20,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-//      settings.maxServerRam += 256;
       _counter++;
     });
-  }
-
-  void scanServers() {
-    // Placeholder for server scanning logic
-    try {
-      Directory dir = Directory("./servers");
-      print('Scanning for servers...');
-    } catch (e) {
-      print('Error scanning servers: $e');
-    }
   }
 
   @override
@@ -66,10 +52,45 @@ class HomePageDrawer extends StatelessWidget {
           return NavigationDrawer(
             children: [
               HomePageDrawerHeader(),
-              for (var server in value) ServerListTileEntry(server: server),
+              NewServerButton(),
             ],
           );
         });
+  }
+}
+
+class NewServerButton extends StatelessWidget {
+  const NewServerButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      onPressed: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const AddServerPage(),
+          ),
+        );
+      },
+      icon: const Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: EdgeInsets.all(16.0),
+            child: Text(
+              "New Server",
+              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+            ),
+          ),
+          Icon(
+            Icons.add,
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -84,10 +105,10 @@ class HomePageDrawerHeader extends StatelessWidget {
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.primary,
       ),
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Column(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -115,7 +136,6 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
       leading: IconButton(
         onPressed: () {
           // How does this work?
-          derpolate();
           Scaffold.of(context).openDrawer();
         },
         icon: Icon(Icons.handyman),
@@ -136,27 +156,6 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
         ),
       ],
     );
-  }
-
-  void derpolate() {
-    List<Server> servers = [];
-    try {
-      Directory dir = Directory("./servers");
-      print('Derpolating servers...');
-
-      for (var entity in dir.listSync()) {
-        if (entity is File) {
-          print("Skipping file: ${entity.path}");
-          continue;
-        } else if (entity is Directory) {
-          print("Found server directory: ${entity.path}");
-          servers.add(Server(entity.path));
-        }
-      }
-    } catch (e) {
-      print('Error derpolating servers: $e');
-    }
-    serverListNotifier.value = servers;
   }
 }
 

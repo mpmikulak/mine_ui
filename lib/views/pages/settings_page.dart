@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:mine_ui/views/widgets/ram_slider.dart';
 import 'package:mine_ui/data/databases/settings.dart' as settings;
+import 'package:mine_ui/views/widgets/text_styles.dart';
 
 class SettingsPage extends StatelessWidget {
   const SettingsPage({super.key});
@@ -14,10 +15,14 @@ class SettingsPage extends StatelessWidget {
         title: Text(name),
         backgroundColor: Theme.of(context).colorScheme.secondary,
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [RamSlider(), DarkModeSwitch()],
+          children: [
+            CategoryTitleText("Default RAM Allocation:"),
+            RamSlider(),
+            DarkModeSwitch()
+          ],
         ),
       ),
     );

@@ -25,8 +25,8 @@ class _RamSliderState extends State<RamSlider> {
             "${_currentRangeValues.start.round()} MB - "
             "${_currentRangeValues.end.round()} MB",
             style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              fontWeight: FontWeight.w400,
             ),
           ),
         ),
