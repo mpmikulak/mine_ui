@@ -51,20 +51,54 @@ class DrawerHeaderSubtext extends StatelessWidget {
 /// A styled text widget for category titles, such as in the settings page, or
 /// where different categories are displayed on the same page.
 class CategoryTitleText extends StatelessWidget {
-  const CategoryTitleText(this.title, {super.key});
+  const CategoryTitleText({required this.text, super.key});
 
-  final String title;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
       child: Text(
-        title,
+        text,
         style: const TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.w400,
         ),
+      ),
+    );
+  }
+}
+
+class AppBarTitleText extends StatelessWidget {
+  const AppBarTitleText(this.text, {super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: const TextStyle(
+        fontSize: 25,
+        fontWeight: FontWeight.w400,
+      ),
+    );
+  }
+}
+
+class ListTileEntryText extends StatelessWidget {
+  const ListTileEntryText({required this.text, super.key});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w300,
       ),
     );
   }

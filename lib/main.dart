@@ -36,6 +36,6 @@ Future<void> initializeHive() async {
   Hive.registerAdapter(ServerAdapter());
 
   // Open necessary boxes
-  await Hive.openBox<Server>('servers');
+  await Hive.openBox('servers');
   await Hive.openBox('globalSettings');
 }

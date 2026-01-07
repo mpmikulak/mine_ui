@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mine_ui/views/pages/developer_page.dart';
 
 import 'package:mine_ui/views/widgets/text.dart';
 import 'package:mine_ui/data/notifiers.dart';
@@ -15,20 +16,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   List<String> servers = [];
 
   void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: HomePageAppBar(),
-      body: HomePageBody(counter: _counter),
+      body: HomePageBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
@@ -52,6 +50,7 @@ class HomePageDrawer extends StatelessWidget {
           return NavigationDrawer(
             children: [
               HomePageDrawerHeader(),
+              Divider(),
               NewServerButton(),
             ],
           );
@@ -138,18 +137,26 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
           // How does this work?
           Scaffold.of(context).openDrawer();
         },
-        icon: Icon(Icons.handyman),
+        icon: Icon(Icons.menu),
       ),
       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      title: const Text('Home Page'),
+      title: const AppBarTitleText("Home Page"),
       actions: [
         IconButton(
           onPressed: () {
-            Navigator.push(
+            _navigateTo(
               context,
-              MaterialPageRoute(
-                builder: (context) => const SettingsPage(),
-              ),
+              DeveloperPage(),
+            );
+          },
+          icon: Icon(Icons.handyman),
+          tooltip: "Developer Tools",
+        ),
+        IconButton(
+          onPressed: () {
+            _navigateTo(
+              context,
+              SettingsPage(),
             );
           },
           icon: Icon(Icons.settings),
@@ -157,29 +164,29 @@ class HomePageAppBar extends StatelessWidget implements PreferredSizeWidget {
       ],
     );
   }
+
+  Future<dynamic> _navigateTo(BuildContext context, Widget destination) {
+    return Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => destination,
+      ),
+    );
+  }
 }
 
 class HomePageBody extends StatelessWidget {
   const HomePageBody({
     super.key,
-    required int counter,
-  }) : _counter = counter;
-
-  final int _counter;
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          const Text(
-            'You have pushed the button this many times:',
-          ),
-          Text(
-            '$_counter',
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
+          Text("Home page placeholder"),
         ],
       ),
     );
