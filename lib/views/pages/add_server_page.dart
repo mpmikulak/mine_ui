@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mine_ui/views/widgets/text_styles.dart';
+import 'package:mine_ui/views/widgets/text.dart';
 
 class AddServerPage extends StatelessWidget {
   const AddServerPage({super.key});
