@@ -19,7 +19,7 @@ class SettingsPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            CategoryTitleText("Default RAM Allocation:"),
+            CategoryTitleText(text: "Default RAM Allocation:"),
             RamSlider(),
             DarkModeSwitch()
           ],

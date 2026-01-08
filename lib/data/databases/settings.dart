@@ -1,12 +1,13 @@
-/// Library Settings is used to store global settings for the entire program.
-/// This library utilizes the Hive package to persist these settings from session to session.
-/// In the case that the user hasn't changed a setting, this library provides a default value.
+/// A library that is used to store global settings for the entire program.
+/// This library utilizes the Hive package to persist these settings from
+/// session to session. In the case that the user hasn't changed a setting,
+/// this library provides a default value.
 library settings;
 
 import "package:hive_ce/hive.dart";
 import 'package:hive_ce_flutter/hive_flutter.dart';
 
-// Defaults section
+/// A section devoted to global defaults
 String _boxName = "globalSettings";
 bool _defaultDarkMode = false;
 String _defaultStoragePath = "./storage/";
@@ -57,4 +58,8 @@ double get defaultMinRam =>
 set defaultMinRam(double value) {
   (value < defaultMinRam) ? value = value : defaultMaxRam;
   _box.put("defaultMinRam", value);
+}
+
+void clearSettings() {
+  _box.clear();
 }
