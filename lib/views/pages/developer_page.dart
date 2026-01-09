@@ -11,9 +11,9 @@ class DeveloperPage extends StatelessWidget {
   /// A function that builds a list of developer tool widgets,
   /// including the category title and individual tool options.
   List<Widget> _buildDeveloperTools() {
-    return [
+    return <Widget>[
       // Category header for neatness
-      CategoryTitleText(text: "Database Tools"),
+      const CategoryTitleText(text: "Database Tools"),
 
       // Reset buttons
       DevOptionsListTile(
@@ -28,17 +28,21 @@ class DeveloperPage extends StatelessWidget {
           clearServers();
         },
       ),
+
+      // Placeholder for future tools
+      const CategoryTitleText(text: "New tools go here")
     ];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const AppBarTitleText("Developer Page"),
-        ),
-        body: ListView(
-          children: _buildDeveloperTools(),
-        ));
+      appBar: AppBar(
+        title: const AppBarTitleText("Developer Page"),
+      ),
+      body: ListView(
+        children: _buildDeveloperTools(),
+      ),
+    );
   }
 }

@@ -11,8 +11,11 @@ String _boxName = "servers";
 
 Box get _box => Hive.box(_boxName);
 
-// TODO: Change to return a List<String>
+/// Retrieves a list of all server objects stored in the database.
 List<dynamic> get serverList => _box.values.toList();
+
+/// Retrieves a list of server names stored in the database.
+List<String> get serverNames => _box.keys.cast<String>().toList();
 
 /// Adds a new server to the database. This uses the server name
 /// as the key and the server object as the value.
@@ -28,9 +31,4 @@ void removeServer(String name) {
 /// Clears all servers from the database.
 void clearServers() {
   _box.clear();
-}
-
-/// Retrieves a list of all server names stored in the database.
-List<String> getServerNames() {
-  return _box.keys.cast<String>().toList();
 }

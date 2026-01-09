@@ -15,7 +15,6 @@ class ServerListTileEntry extends StatelessWidget {
     return ListTile(
       leading: Icon(Icons.storage),
       title: Text(server.name),
-      subtitle: Text(server.path),
       onTap: () {
         // Handle server selection
         print('Selected server: ${server.name}');

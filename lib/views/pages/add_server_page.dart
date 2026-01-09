@@ -81,9 +81,8 @@ class _NewServerFormState extends State<NewServerForm> {
               if (_formKey.currentState?.validate() ?? false) {
                 servers.addServer(_serverNameController.text, createServer());
               }
-              print(servers.serverList);
             },
-            child: Text("Submit"),
+            child: const Text("Submit"),
           ),
         ],
       ),
